@@ -2,7 +2,11 @@
 
 namespace App\Providers;
 
+
+use App\Models\User;
+use Laravel\Pulse\Facades\Pulse;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Gate;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +23,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        // Gate::define('viewPulse', function (User $user) {
+        //     return $user->isAdmin();
+        // });
+
+    //    Pulse::user(fn ($user) => [
+    //         'name' => $user->name,
+    //         'extra' => $user->email,
+    //         'avatar' => $user->avatar_url,
+    //     ]);
     }
 }
