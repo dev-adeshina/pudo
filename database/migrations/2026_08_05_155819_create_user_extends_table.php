@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('user_extends', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
+            $table->string('profile_type_id');
+            $table->string('code')->unique()->nullable();
+            $table->enum('status', ['pending', 'active', 'rejected', 'suspended'])->default('active');
+            $table->json('metadata')->nullable();
             $table->timestamps();
         });
     }
