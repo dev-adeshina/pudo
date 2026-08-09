@@ -35,6 +35,7 @@ class CreateNewUser implements CreatesNewUsers
             'password' => $this->passwordRules(),
         ])->validate();
 
+
         return User::create([
             'access_point_id' => $input['access_point_id'],
             'name' => $input['name'],
@@ -42,4 +43,6 @@ class CreateNewUser implements CreatesNewUsers
             'password' => Hash::make($input['password']),
         ]);
     }
+
+    
 }
