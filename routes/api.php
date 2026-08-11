@@ -8,3 +8,9 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 
+Route::post('login', [\App\Http\Controllers\DoorWay\LoginController::class, 'authenticate']);
+Route::post('logout', [\App\Http\Controllers\DoorWay\LogoutController::class, 'logout']);
+
+require __DIR__ . '/admin.php';
+require __DIR__ . '/pudo.php';
+require __DIR__ . '/user.php';
