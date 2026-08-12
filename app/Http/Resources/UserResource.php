@@ -19,9 +19,9 @@ class UserResource extends JsonResource
         return [
             'name' => $this->name,
             'email' => $this->email,
-            'access' => new AccessPointResource($this->whenLoaded('access')),
-            'profileType' => new ProfileTypeResource($this->whenLoaded('profileType')),
-            'meta' => new UserExtendResource($this->whenLoaded('userExtended')), 
+            'access' => new AccessPointResource($this->whenLoaded('accessPoint')),
+            
+            'extended' => new UserExtendResource($this->whenLoaded('userExtended')), 
 
         ];
     }

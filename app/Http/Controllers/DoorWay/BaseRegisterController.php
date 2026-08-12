@@ -9,13 +9,12 @@ use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-
+use Illuminate\Auth\Events\Registered;
 
 class BaseRegisterController extends Controller
 {
     public function register(RegisterRequest $request): JsonResponse 
     {
-
 
         $user = User::create([
             'access_point_id' => $request->route('access_point_id'),
@@ -23,9 +22,7 @@ class BaseRegisterController extends Controller
             'email' => $request->validated('email'),
             'password' => Hash::make($request->validated('password')),
         ]);
-
-
-        
+        event(new Registered($user));
         return ApiResponse::success( data: $user, message: 'User registered successfully');
 
     }

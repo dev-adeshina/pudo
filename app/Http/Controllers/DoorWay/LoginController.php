@@ -30,7 +30,7 @@ class LoginController extends Controller
         }
 
         $token = $user->createToken($request->device_name);
-
+        $user = User::with([ 'accessPoint', 'userExtended', 'userExtended.profileType'])->findOrfail($user->id);
         return ApiResponse::success(
             data: ['user' => new UserResource($user), 'token' => $token->plainTextToken],
             message: 'Login successful'
