@@ -21,3 +21,4 @@ require __DIR__ . '/pudo.php';
 require __DIR__ . '/user.php';
 require __DIR__ . '/errand.php';
 require __DIR__ . '/delivery.php';
+require __DIR__ . '/search.php';

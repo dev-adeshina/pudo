@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::prefix('delivery')->middleware('auth:sanctum')->group(function () {
-    Route::post('/tagging', [LocalTagController::class, 'tagging'])->defaults('access_point_id', 6);
-    Route::post('/getRide', [NearestRideController::class, 'searchNearBy'])->defaults('access_point_id', 6);
+    Route::post('/tagging', [LocalTagController::class, 'tagging']);
+    Route::post('/getRide', [NearestRideController::class, 'searchNearBy']);
 
 });
