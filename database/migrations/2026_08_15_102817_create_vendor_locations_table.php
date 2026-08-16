@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('vendor_locations', function (Blueprint $table) {
             $table->id();
-            $table->foreign('vendor_id')->constraind('vendors')->cascadeOnDelete();
+            $table->foreignId('vendor_id')->constraind('vendors')->cascadeOnDelete();
             $table->string('label');
             $table->string('address_line')->nullable();
             $table->string('city')->index();

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('item_dimensions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('item_id')->primary()->constrained('items')->cascadeOnDelete();
+            $table->foreignId('item_id')->constrained('items')->cascadeOnDelete();
             $table->decimal('length_cm', 8, 2)->nullable();
             $table->decimal('width_cm', 8, 2)->nullable();
             $table->decimal('height_cm', 8, 2)->nullable();

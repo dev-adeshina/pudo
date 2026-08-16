@@ -12,7 +12,6 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('item_handling_classes', function (Blueprint $table) {
-            $table->id();
             $table->foreignId('item_id')->constrained('items')->cascadeOnDelete();
             $table->foreignId('handling_class_id')->constrained('handling_classes')->restrictOnDelete();
             $table->primary(['item_id', 'handling_class_id']);

@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('path');
             $table->unsignedSmallInteger('sort_order')->default(0);
             $table->boolean('is_primary')->default(false);
-            $table->timestamps();
             $table->index(['item_id', 'sort_order']);
             $table->timestamps();
         });
