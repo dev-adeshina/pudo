@@ -17,9 +17,7 @@ Route::get('/email/verify', [EmailVerificationController::class, 'show'])->middl
 Route::get('/email/verify/{id}/{hash}', [EmailVerificationController::class, 'verify'])->middleware('signed')->name('verification.verify');
 Route::get('/email/verification-notification', [EmailVerificationController::class, 'resend'])->middleware(['auth:sanctum', 'throttle:6,1'])->name('verification.send');
 
-Route::middleware('auth:sanctum')->group(function () {
-    Route::post('profile', GeneralProfileController::class);
-});
+Route::middleware('auth:sanctum')->group(function () {Route::post('profile', GeneralProfileController::class);});
 require __DIR__ . '/admin.php';
 require __DIR__ . '/pudo.php';
 require __DIR__ . '/user.php';

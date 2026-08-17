@@ -1,8 +1,8 @@
 <?php
 
-use App\Domains\Identity\Models\PudoType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Domains\Identity\Models\PudoType;
 use App\Http\Controllers\DoorWay\Pudo\RegisterController;
 
 

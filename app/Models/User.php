@@ -16,6 +16,8 @@ use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use App\Domains\Identity\Models\ProfileType;
 use App\Domains\Identity\Models\UserExtend;
+use App\Domains\Identity\Models\Vendor;
+
 
 
 #[Fillable(['access_point_id', 'name', 'email', 'password'])]
@@ -48,5 +50,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function userExtended(): HasOne
     {
         return $this->hasOne(UserExtend::class);
+    }
+
+    public function vendor(): HasOne 
+    {
+        return $this->hasOne(Vendor::class);
     }
 }

@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 
-#[Fillable('user_id', 'business_name', 'slug', 'status')]
+#[Fillable('user_id', 'profile_type_id', 'business_name', 'slug', 'status')]
 
 class Vendor extends Model
 {
