@@ -9,7 +9,8 @@ use App\Http\Controllers\Admin\Activity\SizeClassController;
 use App\Http\Controllers\Admin\Activity\WeightClassController;
 
 
-Route::prefix('activities')->middleware('auth:sanctum')->group(function () {
+
+Route::prefix('activities')->middleware(['auth:sanctum', 'access:admin'])->group(function () {
     Route::get('get-category', [CategoryController::class, 'show']);
     Route::get('get-brand', [BrandController::class, 'show']);
     Route::get('get-logisticprofile', [LogisticsProfileController::class, 'show']);
