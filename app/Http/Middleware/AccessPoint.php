@@ -23,7 +23,6 @@ class AccessPoint
         }
 
         if ($request->user()->accessPoint?->slug !== $access) {
-            // return ApiResponse::error(message: (string)$request->user()->accessPoint?->slug . ' -- '. $access);
             return $this->switchRoute($request->user()->accessPoint?->slug);
             
         }
