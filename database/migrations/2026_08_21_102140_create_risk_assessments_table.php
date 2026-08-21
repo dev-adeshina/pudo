@@ -14,26 +14,16 @@ return new class extends Migration
         Schema::create('risk_assessments', function (Blueprint $table) {
             $table->id();
             $table->morphs('subject');
-
             $table->foreignId('transaction_id')
                 ->nullable()
                 ->constrained('transactions')
                 ->nullOnDelete();
-
             $table->unsignedInteger('risk_score')->nullable();
-
             $table->string('risk_level');
-
             $table->string('decision');
-
             $table->text('reason')->nullable();
-
             $table->timestamps();
 
-            // $table->index([
-            //     'subject_type',
-            //     'subject_id',
-            // ]);
         });
     }
 

@@ -13,13 +13,6 @@ return new class extends Migration
     {
         Schema::create('transaction_links', function (Blueprint $table) {
             $table->id();
-            // $table->foreignId('source_transaction_id')->constrained('transactions')->restrictOnDelete();
-            // $table->foreignId('destination_transaction_id')->constrained('transactions')->restrictOnDelete();
-            // $table->string('relationship_type');
-            // $table->unsignedBigInteger('amount_minor');
-            // $table->timestamps();
-
-            // $table->index(['source_transaction_id', 'destination_transaction_id', 'transaction_links_tx_pair_idx']); 
             $table->foreignId('source_transaction_id')
                 ->constrained('transactions')
                 ->restrictOnDelete();
