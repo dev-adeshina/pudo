@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('relationship_type');
             $table->unsignedBigInteger('amount_minor');
             $table->timestamps();
-            $table->index(['source_transaction_id', 'destination_transaction_id']);
+            $table->index(['source_transaction_id', 'destination_transaction_id', 'transaction_links_tx_pair_idx']);
             
         });
     }
