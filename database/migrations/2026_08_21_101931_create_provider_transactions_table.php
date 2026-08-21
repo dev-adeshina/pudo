@@ -48,7 +48,6 @@ return new class extends Migration
                 'transaction_id',
                 'provider',
             ]);
-            $table->timestamps();
         });
     }
 

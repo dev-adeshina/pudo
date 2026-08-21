@@ -30,10 +30,10 @@ return new class extends Migration
 
             $table->timestamps();
 
-            $table->index([
-                'subject_type',
-                'subject_id',
-            ]);
+            // $table->index([
+            //     'subject_type',
+            //     'subject_id',
+            // ]);
         });
     }
 

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->char('currency', 3)->default('NGN');
             $table->string('status')->default('active');
             $table->timestamps();
-            $table->index(['owner_type', 'owner_id']);
+            // $table->index(['owner_type', 'owner_id']);
         });
     }
 
