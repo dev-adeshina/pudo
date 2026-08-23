@@ -20,7 +20,7 @@ use App\Domains\Identity\Models\Vendor;
 
 
 
-#[Fillable(['access_point_id', 'name', 'email', 'password'])]
+#[Fillable(['access_point_id', 'name', 'mobile', 'email', 'password'])]
 #[Hidden(['password', 'remember_token'])]
 class User extends Authenticatable implements MustVerifyEmail
 {

@@ -16,6 +16,8 @@ return new class extends Migration
             $table->foreignId('user_id')->unique()->constrained('users')->cascadeOnDelete();
             $table->foreignId('profile_type_id')->constrained('profile_types')->cascadeOnDelete();
             $table->string('business_name');
+            $table->string('business_mobile')->unique();
+            $table->text('business_description');
             $table->string('slug')->unique();
             $table->enum('status', ['pending', 'active', 'suspended'])->default('pending');
             $table->timestamps();

@@ -16,6 +16,13 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->string('profile_type_id');
             $table->string('code')->unique()->nullable();
+            $table->enum('gender', ['Male', 'Female'])->default('Male');
+            $table->dateTime('dob');
+            $table->string('profile_photo_path');
+            $table->string('address');
+            $table->string('city');
+            $table->string('state');
+            $table->string('country');
             $table->enum('status', ['pending', 'active', 'rejected', 'suspended'])->default('active');
             $table->json('metadata')->nullable();
             $table->timestamps();

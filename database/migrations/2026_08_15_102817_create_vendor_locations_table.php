@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('vendor_id')->constraind('vendors')->cascadeOnDelete();
             $table->string('label');
             $table->string('address_line')->nullable();
+            $table->string('market_name');
             $table->string('city')->index();
             $table->string('state')->index();
             $table->char('country_code', 2)->default('NG');
