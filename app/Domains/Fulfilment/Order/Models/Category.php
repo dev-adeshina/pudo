@@ -7,12 +7,12 @@ use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-
+use Laravel\Scout\Searchable;
 
 #[Fillable('parent_id', 'name', 'slug', 'status', 'sort_order')]
 class Category extends Model
 {
-    //
+    use Searchable;
 
     public function parent(): BelongsTo 
     {

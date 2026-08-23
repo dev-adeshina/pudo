@@ -17,6 +17,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Laravel\Scout\Attributes\SearchUsingFullText;
+use Laravel\Scout\Attributes\SearchUsingPrefix;
+use Laravel\Scout\Searchable;
+use Laravel\Scout\Engines\Engine;
+use Laravel\Scout\Scout;
 
 #[Fillable('vendor_id', 'vendor_location_id', 'category_id', 'brand_id',
         'logistics_profile_id', 'weight_class_id', 'size_class_id',
@@ -28,7 +33,7 @@ class Item extends Model
  
     //
 
-    use SoftDeletes;
+    use SoftDeletes, Searchable;
     protected $casts = [
         'price' => 'decimal:2',
     ];
@@ -83,5 +88,33 @@ class Item extends Model
         return $this->hasOne(ItemDimension::class);
     }
 
+    #[SearchUsingPrefix('id', 'vendor', 'vendor_location_id', 'category_id', 'brand_id', 'name', 'logistics_profile_id', '')]
+    #[SearchUsingFullText('slug', 'description', 'price', 'currency')]
+    public function toSearchableArray(): array
+    {
+        return [
+           'id'    => $this->id,
+           'vendor' => $this->vendor_id,
+           'vendor_location_id' => $this->vendor_location_id,
+           'category_id' => $this->category_id,
+           'brand_id' => $this->brand_id,
+           'logistics_profile_id' => $this->logistics_profile_id,
+           'weight_class_id' => $this->weight_class_id,
+           'size_class_id' => $this->size_class_id,
+           'name' => $this->name,
+           'slug' => $this->slug,
+           'description' => $this->description,
+           'sku' => $this->sku,
+           'price' => $this->price,
+           'currency' => $this->currency
+        ];
+    }
+
+    public function searchableUsing(): Engine
+    {
+        return Scout::engine('meilisearch');
+    }
     
 }
+
+

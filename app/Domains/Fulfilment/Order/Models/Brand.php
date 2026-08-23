@@ -8,12 +8,12 @@ use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-
+use Laravel\Scout\Searchable;
 
 #[Fillable('name', 'slug', 'status', 'created_by_vendor_id', 'logo_path')]
 class Brand extends Model
 {
-    //
+    use Searchable;
 
 
     public function items(): HasMany

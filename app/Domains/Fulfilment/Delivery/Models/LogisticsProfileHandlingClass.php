@@ -5,13 +5,14 @@ namespace App\Domains\Fulfilment\Delivery\Models;
 use App\Domains\Fulfilment\Items\Models\Item;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Laravel\Scout\Searchable;
 
 class LogisticsProfileHandlingClass extends Model
 {
-    //
+    use Searchable;
 
-        public function item(): HasMany
-        {
-            return $this->hasMany(Item::class);
-        }
+    public function item(): HasMany
+    {
+        return $this->hasMany(Item::class);
+    }
 }

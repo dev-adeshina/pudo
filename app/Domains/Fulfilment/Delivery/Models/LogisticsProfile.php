@@ -8,10 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Laravel\Scout\Searchable;
 
 #[Fillable('name', 'description', 'default_weight_class_id', 'default_size_class_id')]
 class LogisticsProfile extends Model
 {
+    use Searchable;
     
     public function handlingClasses(): BelongsToMany
     {
