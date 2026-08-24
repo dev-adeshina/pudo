@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('errand_id')->constrained('errands')->cascadeOnDelete();
             $table->text('current_location');
             $table->text('service_area');
-            $table->enum('availability', [true, false])->default(false);
+            $table->boolean('availability')->default(false);
             $table->enum('id_type', ['NIN', 'BVN', 'PASSPORT', 'DL']);
             $table->string('code')->nullable();
             $table->string('front_image_path')->nullable();
