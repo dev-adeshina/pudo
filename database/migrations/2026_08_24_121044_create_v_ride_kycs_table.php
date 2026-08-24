@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('vendor_kycs', function (Blueprint $table) {
+        Schema::create('v_ride_kycs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('vendor_id')->constrained('vendors')->cascadeOnDelete();
+            $table->foreignId('v_ride_id')->constrained('v_rides')->cascadeOnDelete();
             $table->enum('id_type', ['NIN', 'BVN', 'PASSPORT', 'DL']);
             $table->string('code')->nullable();
             $table->string('front_image_path')->nullable();
@@ -21,8 +21,20 @@ return new class extends Migration
             $table->enum('status', ['pending', 'processing', 'rejected', 'verified']);
             $table->string('lookup_provider')->nullable();
             $table->enum('selfie', ['pending', 'approved', 'rejected'])->default('pending');
-            $table->string('provider_trnx');
-            $table->json('provider_meta');
+
+            $table->string('make');
+            $table->string('model')->nullable();
+            $table->unsignedSmallInteger('year')->nullable();
+
+            $table->string('color')->nullable();
+
+            $table->string('registration_number')->unique();
+            $table->string('plate_number')->unique();
+
+            $table->string('vin')->nullable()->unique();
+
+            $table->decimal('weight_capacity', 10, 2)->nullable();
+
             $table->timestamps();
         });
     }
@@ -32,6 +44,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('vendor_kycs');
+        Schema::dropIfExists('v_ride_kycs');
     }
 };
