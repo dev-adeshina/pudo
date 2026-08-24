@@ -24,7 +24,7 @@ return new class extends Migration
 
             $table->text('suspension_reason')->nullable();
             $table->timestamps();
-            $table->index(['vride_type_id', 'status']);
+            $table->index(['v_ride_type_id', 'status']);
         });
     }
 
