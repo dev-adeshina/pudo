@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('back_image_path')->nullable();
             $table->enum('status', ['pending', 'processing', 'rejected', 'verified']);
             $table->string('lookup_provider')->nullable();
-            $table->enum('selfie', [true, false]);
+            $table->enum('selfie', ['pending', 'approved', 'rejected'])->default('pending');
             $table->string('provider_trnx');
             $table->json('provider_meta');
             $table->timestamps();

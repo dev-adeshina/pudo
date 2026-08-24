@@ -20,7 +20,7 @@ return new class extends Migration
             $table->text('residential_address');
             $table->string('emergency_contact_name');
             $table->string('emergency_contact_mobile');
-            $table->enum('contact_verification', [true, false])->default(false);
+            $table->enum('contact_verification', ['pending', 'verified', 'rejected'])->default('pending');
             $table->timestamps();
         });
     }
