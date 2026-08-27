@@ -37,7 +37,7 @@ class AccessPoint
                  return ApiResponse::forbidden(message: "You are not an admin");
                 break;
             case 'user':
-                 return ApiResponse::forbidden(message: "You are not an user");
+                 return ApiResponse::forbidden(message: "You are not a user");
                 break;
             case 'pudo':
                  return ApiResponse::forbidden(message: "You are not an pudo");

@@ -20,6 +20,7 @@ class BaseRegisterController extends Controller
             'access_point_id' => $request->route('access_point_id'),
             'name' => $request->validated('name'),
             'email' => $request->validated('email'),
+            'mobile'    => $request->mobile,
             'password' => Hash::make($request->validated('password')),
         ]);
         event(new Registered($user));
