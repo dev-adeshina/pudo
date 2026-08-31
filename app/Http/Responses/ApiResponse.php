@@ -101,6 +101,36 @@ class ApiResponse
     }
 
 
+    public static function customError(
+        mixed $data = null, 
+        string $message = "Custom Error", 
+        int $statusCode = 422, 
+        array $meta = []): JsonResponse
+    {
+        return self::error(
+            data: $data,
+            message: $message,
+            meta:  $meta,
+            statusCode: $statusCode
+        );
+    }
+
+
+    public function customMessage(
+        mixed $data = null, 
+        string $message = "Custom Error", 
+        int $statusCode = 200, 
+        array $meta = []):JsonResponse 
+    {
+        return self::error(
+            data: $data,
+            message: $message,
+            meta:  $meta,
+            statusCode: $statusCode
+        );
+    }
+
+
     private static function response(
         bool $success, 
         mixed $data = null, 

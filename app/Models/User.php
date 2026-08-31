@@ -17,7 +17,9 @@ use Spatie\Permission\Traits\HasRoles;
 use App\Domains\Identity\Models\ProfileType;
 use App\Domains\Identity\Models\UserExtend;
 use App\Domains\Identity\Models\Vendor;
-
+use App\Domains\Wallet\Models\ComplianceProfile;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
+use App\Domains\Wallet\Models\Wallet;
 
 
 #[Fillable(['access_point_id', 'name', 'mobile', 'email', 'password'])]
@@ -45,8 +47,6 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->belongsTo(AccessPoint::class);
     }
 
-  
-
     public function userExtended(): HasOne
     {
         return $this->hasOne(UserExtend::class);
@@ -55,5 +55,15 @@ class User extends Authenticatable implements MustVerifyEmail
     public function vendor(): HasOne 
     {
         return $this->hasOne(Vendor::class);
+    }
+
+    public function wallet(): MorphOne
+    {
+        return $this->morphOne(Wallet::class, 'owner');
+    }
+
+    public function complianceProfile(): MorphOne
+    {
+        return $this->morphOne(ComplianceProfile::class, 'subject');
     }
 }
