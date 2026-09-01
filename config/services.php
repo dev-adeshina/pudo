@@ -35,4 +35,26 @@ return [
         ],
     ],
 
+    'anchor' => [
+        'sandbox'   => [
+            'url'   => env('GET_ANCHOR_SANBOX_URL'),
+            'key'   => env('GET_ANCHOR_SANDBOX_SECRET'),
+        ],
+        'live'  => [
+            'url'   => env('GET_ANCHOR_LIVE_URL'),
+            'key'   => env('GET_ANCHOR_LIVE_SECRET')
+        ],  
+    ],
+
+    'dojah' => [
+        'sandbox'   => [
+            'url'   => env('DOJAH_SANDBOX_URL'),
+            'key'   => env('DOJAH_SANDBOX_SECRET')
+        ], 
+        'live'  => [
+            'url'   => env('DOJAH_LIVE_URL'),
+            'key'   => env('DOJAH_LIVE_SECRET')
+        ]
+    ]
+
 ];
