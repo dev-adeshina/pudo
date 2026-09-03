@@ -49,11 +49,13 @@ return [
     'dojah' => [
         'sandbox'   => [
             'url'   => env('DOJAH_SANDBOX_URL'),
-            'key'   => env('DOJAH_SANDBOX_SECRET')
+            'key'   => env('DOJAH_SANDBOX_SECRET'),
+            'app_id' => env('DOJAH_SANDBOX_APP_ID')
         ], 
         'live'  => [
             'url'   => env('DOJAH_LIVE_URL'),
-            'key'   => env('DOJAH_LIVE_SECRET')
+            'key'   => env('DOJAH_LIVE_SECRET'),
+            'app_id' => env('DOJAH_LIVE_APP_ID')
         ]
     ]
 
