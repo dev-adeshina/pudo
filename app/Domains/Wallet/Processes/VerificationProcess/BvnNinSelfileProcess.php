@@ -25,12 +25,6 @@ class BvnNinSelfileProcess
         $this->user = User::query()->find($data->user->id);
         $ownerType = $this->user->userExtended->profileType->getEntityClass;
 
-        // if($ownerType->complianceProfile->kyc_status === 'verified'){
-        //     $this->validated = true;
-        // }else{
-        //     $this->validated = false;
-        // }
-
         return $ownerType->complianceProfile->kyc_status === 'verified' ? $this->validated = true : $this->validated = false;
     }
 

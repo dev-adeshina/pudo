@@ -22,11 +22,8 @@ return new class extends Migration
 
         DB::table('access_points')->insert([
             ['name' => 'Admin', 'slug' => 'admin', 'is_active' => true],
-            ['name' => 'User', 'slug' => 'user', 'is_active' => true],
-            ['name' => 'Pudo', 'slug' => 'pudo', 'is_active' => true],
-            ['name' => 'Skilled', 'slug' => 'skilled', 'is_active' => true],
-            ['name' => 'Delivery', 'slug' => 'delivery', 'is_active' => true],
-            ['name' => 'Errand', 'slug' => 'errand', 'is_active' => true],
+            ['name' => 'Client', 'slug' => 'client', 'is_active' => true],
+            ['name' => 'Pudo', 'slug' => 'pudo', 'is_active' => true]
         ]);
     }
 

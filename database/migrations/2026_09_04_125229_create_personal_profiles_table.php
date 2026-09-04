@@ -11,11 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user_extends', function (Blueprint $table) {
+        Schema::create('personal_profiles', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
-            $table->string('profile_type_id');
-            $table->string('code')->unique()->nullable();
             $table->enum('gender', ['Male', 'Female'])->default('Male');
             $table->dateTime('dob');
             $table->string('profile_photo_path');
@@ -23,7 +21,6 @@ return new class extends Migration
             $table->string('city');
             $table->string('state');
             $table->string('country');
-            $table->enum('status', ['pending', 'active', 'rejected', 'suspended'])->default('active');
             $table->json('metadata')->nullable();
             $table->timestamps();
         });
@@ -34,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('user_extends');
+        Schema::dropIfExists('personal_profiles');
     }
 };

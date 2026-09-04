@@ -22,7 +22,7 @@ class UserResource extends JsonResource
             'mobile'    => $this->mobile,
             'access'    => new AccessPointResource($this->whenLoaded('accessPoint')),
             
-            'extended' => $this->userExtended === null ?  "Fill in your profile...".$profileLink  : new UserExtendResource($this->whenLoaded('userExtended')), 
+            // 'extended' => $this->userExtended === null ?  "Fill in your profile...".$profileLink  : new UserExtendResource($this->whenLoaded('userExtended')), 
 
         ];
     }

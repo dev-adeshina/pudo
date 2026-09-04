@@ -12,7 +12,7 @@ use App\Domains\Wallet\Models\Wallet;
 #[Fillable('user_id', 'profile_type_id', 'errand_type_id', 'dob', 'residential_address', 'emergency_contact_name', 'emergency_contact_name', 'emergency_contact_mobile', 'contact_verification')]
 class Errand extends Model
 {
-
+    
     public function type(): BelongsTo
     {
         return $this->belongsTo(ErrandType::class);

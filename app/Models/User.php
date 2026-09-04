@@ -14,8 +14,6 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
-use App\Domains\Identity\Models\ProfileType;
-use App\Domains\Identity\Models\UserExtend;
 use App\Domains\Identity\Models\Vendor;
 use App\Domains\Wallet\Models\ComplianceProfile;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
@@ -47,10 +45,6 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->belongsTo(AccessPoint::class);
     }
 
-    public function userExtended(): HasOne
-    {
-        return $this->hasOne(UserExtend::class);
-    }
 
     public function vendor(): HasOne 
     {
@@ -62,8 +56,8 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->morphOne(Wallet::class, 'owner');
     }
 
-    public function complianceProfile(): MorphOne
-    {
-        return $this->morphOne(ComplianceProfile::class, 'subject');
-    }
+    // public function complianceProfile(): MorphOne
+    // {
+    //     return $this->morphOne(ComplianceProfile::class, 'subject');
+    // }
 }
