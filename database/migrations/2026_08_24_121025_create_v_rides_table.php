@@ -14,9 +14,7 @@ return new class extends Migration
         Schema::create('v_rides', function (Blueprint $table) {
             $table->id();
             $table->foreignId('v_ride_type_id')->constrained('v_ride_types');
-            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
-            $table->foreignId('profile_type_id')->constrained('profile_types')->cascadeOnDelete();
-
+            $table->foreignId('pudo_id')->constrained('pudos')->cascadeOnDelete();
             $table->string('status')->default('pending');
 
             $table->timestamp('approved_at')->nullable();

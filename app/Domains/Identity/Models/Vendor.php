@@ -2,27 +2,25 @@
 
 namespace App\Domains\Identity\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use App\Domains\Fulfilment\Items\Models\Item;
+use App\Domains\Wallet\Models\ComplianceProfile;
+use App\Domains\Wallet\Models\Wallet;
+use Illuminate\Database\Eloquent\Attributes\Fillable;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use App\Models\User;
-use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-use App\Domains\Identity\Models\VendorKyc;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
-use App\Domains\Wallet\Models\Wallet;
-use App\Domains\Wallet\Models\ComplianceProfile;
 
-#[Fillable('user_id', 'profile_type_id', 'business_name', 'slug', 'status')]
+#[Fillable('pudo_id', 'business_name', 'slug', 'status')]
 
 class Vendor extends Model
 {
     //
 
-    public function user(): BelongsTo
+    public function pudo(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Pudo::class);
     }
 
     public function profileType(): BelongsTo

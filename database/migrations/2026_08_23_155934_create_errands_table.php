@@ -13,8 +13,7 @@ return new class extends Migration
     {
         Schema::create('errands', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
-            $table->foreignId('profile_type_id')->constrained('profile_types')->cascadeOnDelete();
+            $table->foreignId('pudo_id')->constrained('pudos')->cascadeOnDelete();
             $table->foreignId('errand_type_id')->constrained('errand_types')->casecadeOnDelete();
             $table->datetime('dob');
             $table->text('residential_address');

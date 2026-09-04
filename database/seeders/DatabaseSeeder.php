@@ -34,23 +34,30 @@ class DatabaseSeeder extends Seeder
             ['name' => 'Pickup Truck', 'slug' => 'pickup-truck', 'description' => 'Light pickup vehicle ride service.', 'requires_drivers_license' => true, 'requires_vehicle_registration' => true, 'requires_insurance' => true, 'status' => 'active', 'created_at' => $timestamp, 'updated_at' => $timestamp],
         ]);
 
-        $profileTypeIds = DB::table('profile_types')->pluck('id', 'slug');
-        $rideTypeIds = DB::table('v_ride_types')->pluck('id', 'slug');
         $users = User::factory(30)->create();
 
+        DB::table('pudos')->insert([
+            ['user_id' => $users[0]->id, 'code' => 'PUDO-001', 'status' => 'active', 'created_at' => $timestamp, 'updated_at' => $timestamp],
+            ['user_id' => $users[1]->id, 'code' => 'PUDO-002', 'status' => 'active', 'created_at' => $timestamp, 'updated_at' => $timestamp],
+            ['user_id' => $users[2]->id, 'code' => 'PUDO-003', 'status' => 'active', 'created_at' => $timestamp, 'updated_at' => $timestamp],
+            ['user_id' => $users[3]->id, 'code' => 'PUDO-004', 'status' => 'active', 'created_at' => $timestamp, 'updated_at' => $timestamp],
+            ['user_id' => $users[4]->id, 'code' => 'PUDO-005', 'status' => 'active', 'created_at' => $timestamp, 'updated_at' => $timestamp],
+        ]);
+        $pudoIds = DB::table('pudos')->pluck('id', 'code');
+        $rideTypeIds = DB::table('v_ride_types')->pluck('id', 'slug');
+
         $rideDefinitions = [
-            ['type' => 'motorcycle', 'profile' => 'courier', 'status' => 'pending'],
-            ['type' => 'tricycle', 'profile' => 'individual', 'status' => 'approved', 'approved_at' => $timestamp],
-            ['type' => 'compact-car', 'profile' => 'business', 'status' => 'active', 'approved_at' => $timestamp],
-            ['type' => 'suv', 'profile' => 'fleet-operator', 'status' => 'suspended', 'suspended_at' => $timestamp, 'suspension_reason' => 'Insurance documents require renewal.'],
-            ['type' => 'pickup-truck', 'profile' => 'courier', 'status' => 'rejected'],
+            ['type' => 'motorcycle', 'pudo' => 'PUDO-001', 'status' => 'pending'],
+            ['type' => 'tricycle', 'pudo' => 'PUDO-002', 'status' => 'approved', 'approved_at' => $timestamp],
+            ['type' => 'compact-car', 'pudo' => 'PUDO-003', 'status' => 'active', 'approved_at' => $timestamp],
+            ['type' => 'suv', 'pudo' => 'PUDO-004', 'status' => 'suspended', 'suspended_at' => $timestamp, 'suspension_reason' => 'Insurance documents require renewal.'],
+            ['type' => 'pickup-truck', 'pudo' => 'PUDO-005', 'status' => 'rejected'],
         ];
 
-        foreach ($rideDefinitions as $index => $rideDefinition) {
+        foreach ($rideDefinitions as $rideDefinition) {
             DB::table('v_rides')->insert([
                 'v_ride_type_id' => $rideTypeIds[$rideDefinition['type']],
-                'user_id' => $users[$index]->id,
-                'profile_type_id' => $profileTypeIds[$rideDefinition['profile']],
+                'pudo_id' => $pudoIds[$rideDefinition['pudo']],
                 'status' => $rideDefinition['status'],
                 'approved_at' => $rideDefinition['approved_at'] ?? null,
                 'suspended_at' => $rideDefinition['suspended_at'] ?? null,
