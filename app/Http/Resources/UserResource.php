@@ -15,14 +15,14 @@ class UserResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        $profileLink = "/api/v1/profile";
+        $profileLink = "/api/v1/personal-profile";
         return [
             'name'      => $this->name,
             'email'     => $this->email,
             'mobile'    => $this->mobile,
-            'access'    => new AccessPointResource($this->whenLoaded('accessPoint')),
+            'personal_profile' => $this->personalProfile === null ?  "Fill in your profile...".$profileLink  : new PersonalProfileResource($this->whenLoaded('personalProfile')),
             
-            // 'extended' => $this->userExtended === null ?  "Fill in your profile...".$profileLink  : new UserExtendResource($this->whenLoaded('userExtended')), 
+            'access_types' => AccessTypeResource::collection($this->whenLoaded('accessTypes')),
 
         ];
     }

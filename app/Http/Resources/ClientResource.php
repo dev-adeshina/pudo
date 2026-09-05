@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class AccessPointResource extends JsonResource
+class ClientResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -14,10 +14,6 @@ class AccessPointResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return [
-            'name' => $this->name,
-            'is_active' => $this->is_active ? true : false,
-            // 'type'  => new AccessTypeResource($this->whenLoaded('AccessType')),
-        ];
+        return parent::toArray($request);
     }
 }

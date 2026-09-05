@@ -11,4 +11,5 @@ Route::prefix('admin')->group(function () {
 
 
     require __DIR__ . '/admin/activities.php';
+    require __DIR__ . '/admin/access.php';
 });

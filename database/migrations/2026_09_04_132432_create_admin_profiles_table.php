@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('admin_profiles', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->unique()->constrained('users')->cascadeOnDelete();
+            $table->foreignId('admin_id')->unique()->constrained('admins')->cascadeOnDelete();
             $table->string('role')->default('admin');
             $table->enum('status', ['active','suspended','blocked',])->default('active');
             $table->string('department')->nullable();

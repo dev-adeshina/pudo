@@ -2,31 +2,27 @@
 
 namespace App\Http\Controllers\DoorWay\Profile;
 
-use App\Domains\Identity\Models\ProfileType;
-use App\Domains\Identity\Models\UserExtend;
+use App\Domains\Identity\Models\PersonalProfile;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Doorway\GeneralProfileRequest;
+use App\Http\Requests\Doorway\PersonalProfileRequest;
 use App\Http\Responses\ApiResponse;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-
+use App\Models\User;
 class GeneralProfileController extends Controller
 {
-    public function __invoke(GeneralProfileRequest $request): JsonResponse
+    public function __invoke(PersonalProfileRequest $request): JsonResponse
     {
         $user = $request->user();
-        $profile = ProfileType::create([
-            'name' => $request->name,
-            'slug' => $request->name,
-            'status' => 'active'
-        ]);
-
-        $extend = $profile->userExtends()->create([
-            'user_id' =>$user->id,
-            'code' => '4544',
-            'status' => 'pending'
-        ]);
-    
-        return ApiResponse::success($extend);
+        $profile = $user->personalProfile()->create([
+            'gender' => $request->gender,
+            'dob' => $request->dob,
+            'profile_photo_path' => $request->profile_photo_path ?? "we are yet to work on this",
+            'address' => $request->address,
+            'city' => $request->city,
+            'state' => $request->state,
+            'country' => $request->country
+        ]);    
+        return ApiResponse::success($profile);
     }
 }

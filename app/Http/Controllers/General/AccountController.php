@@ -17,7 +17,7 @@ class AccountController extends Controller
 
         if(!$data)
             return ApiResponse::forbidden();
-        $user = User::with(['accessPoint', 'userExtended', 'userExtended.profileType'])->findOrfail($data->id);
+        $user = User::with(['accessPoint', ])->findOrfail($data->id);
         return ApiResponse::success(data: new UserResource($user));
         
 

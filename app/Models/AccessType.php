@@ -11,15 +11,17 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
 #[Fillable(['access_point_id', 'user_id', 'accessable_type', 'accessable_id', 'is_active'])]
 class AccessType extends Model
 {
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    
     public function accessPoint(): BelongsTo
     {
         return $this->belongsTo(AccessPoint::class);
     }
 
-    public function user(): BelongsTo
-    {
-        return $this->belongsTo(User::class);
-    }
 
     public function accessable(): MorphTo
     {

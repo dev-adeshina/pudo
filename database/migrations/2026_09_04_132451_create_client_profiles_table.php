@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('client_profiles', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->unique()->constrained('users')->cascadeOnDelete();
+            $table->foreignId('client_id')->unique()->constrained('clients')->cascadeOnDelete();
             $table->enum('preferred_currency', ['USD','EUR','GBP','JPY','CAD','AUD','NGN'])->default('NGN');
             $table->enum('preferred_language', ['en','fa','ar'])->default('en');
             $table->timestamps();
