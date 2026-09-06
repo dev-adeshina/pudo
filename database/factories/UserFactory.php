@@ -26,6 +26,7 @@ class UserFactory extends Factory
     {
         return [
             'name' => fake()->name(),
+            'access_point_id' => fake()->numberBetween(1, 3),
             'email' => fake()->unique()->safeEmail(),
             'mobile' => fake()->unique()->numerify('+23480########'),
             'email_verified_at' => now(),

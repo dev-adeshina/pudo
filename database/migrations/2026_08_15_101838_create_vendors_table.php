@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('business_mobile')->unique();
             $table->text('business_description');
             $table->string('slug')->unique();
-            $table->enum('status', ['pending', 'active', 'suspended'])->default('pending');
+            $table->enum('status', ['pending','active','suspended','blocked',])->default('pending');
             $table->timestamps();
         });
     }

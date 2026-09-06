@@ -1,22 +1,21 @@
 <?php
 
-namespace App\Http\Controllers\DoorWay\Admin;
+namespace App\Http\Controllers\DoorWay\Client;
 
+use App\Domains\Identity\Models\Client;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Requests\Admin\ProfileUpgradeRequest;
-use App\Domains\Identity\Models\AdminProfile;
-use App\Domains\Identity\Models\Admin;
 use App\Enums\StatusEnum;
+use App\Http\Requests\Client\ProfileUpgradeRequest;
 
 class ProfileUpgradeController extends Controller
 {
     public function upgrade(ProfileUpgradeRequest $request)
     {
         $user = $request->user();
-        $admin = Admin::create([
+        $admin = Client::create([
             'user_id' => $user->id,
-            'code' => 'ADM-' . strtoupper(uniqid()),
+            'code' => 'CLI-' . strtoupper(uniqid()),
             'status' => StatusEnum::PENDING
         ]);
 
@@ -28,8 +27,8 @@ class ProfileUpgradeController extends Controller
         ]);
 
         $admin->profile()->create([
-            'role' => $request->input('role'),
-            'department' => $request->input('department')
+            'preferred_currency' => $request->input('preferred_currency'),
+            'preferred_language' => $request->input('preferred_language')
         ]);
 
         
@@ -38,5 +37,3 @@ class ProfileUpgradeController extends Controller
         return response()->json($admin);
     }
 }
-
-

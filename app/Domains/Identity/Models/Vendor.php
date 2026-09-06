@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 
-#[Fillable('pudo_id', 'business_name', 'slug', 'status')]
+#[Fillable('pudo_id', 'business_name', 'business_mobile', 'business_description',  'slug', 'status')]
 
 class Vendor extends Model
 {
@@ -23,9 +23,9 @@ class Vendor extends Model
         return $this->belongsTo(Pudo::class);
     }
 
-    public function profileType(): BelongsTo
+    public function profile(): HasOne
     {
-        return $this->belongsTo(ProfileType::class);
+        return $this->hasOne(VendorProfile::class);
     }
 
     public function location(): HasMany

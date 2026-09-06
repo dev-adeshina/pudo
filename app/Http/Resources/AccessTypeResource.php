@@ -7,6 +7,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 use App\Domains\Identity\Models\Client;
 use App\Domains\Identity\Models\Admin;
 use App\Domains\Identity\Models\Pudo;
+use App\Domains\Identity\Models\Vendor;
 
 class AccessTypeResource extends JsonResource
 {
@@ -28,6 +29,7 @@ class AccessTypeResource extends JsonResource
                 Client::class => new ClientResource($this->whenLoaded('accessable')),
                 Admin::class => new AdminResource($this->whenLoaded('accessable')),
                 Pudo::class => new PudoResource($this->whenLoaded('accessable')),
+                // Vendor::class => new VendorResource($this->whenLoaded('accessable')),
                 default  => null,
             },
         ];

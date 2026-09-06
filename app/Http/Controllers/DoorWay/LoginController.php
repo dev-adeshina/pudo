@@ -9,7 +9,9 @@ use App\Http\Responses\ApiResponse;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Hash;
-
+use App\Domains\Identity\Models\Client;
+use App\Domains\Identity\Models\Admin;
+use App\Domains\Identity\Models\Pudo;
 
 
 
@@ -31,8 +33,17 @@ class LoginController extends Controller
 
         $token = $user->createToken($request->device_name);
 
-        $user = User::with(['accessTypes.accessPoint',  'accessTypes.accessable', 'accessTypes.accessable.profile'])->findOrfail($user->id);
+        // $user = User::with(['accessPoint',  'accessTypes.accessable', 'accessTypes.accessable.profile'])->findOrfail($user->id);
        
+
+        $user = User::with(['accessPoint',  'accessTypes.accessable' => function ($morphTo) {
+        $morphTo->morphWith([
+            Client::class => ['profile'],
+            Admin::class => ['profile'],
+            Pudo::class => ['vendor', 'vendor.profile','errand'],
+        ]);
+    },])->findOrfail($user->id);
+
         return ApiResponse::success(
             data: ['user' => new UserResource($user), 'token' => $token->plainTextToken],
             message: 'Login successful'

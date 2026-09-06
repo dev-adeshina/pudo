@@ -17,9 +17,11 @@ class UserResource extends JsonResource
     {
         $profileLink = "/api/v1/personal-profile";
         return [
+            'id'        => $this->id,
             'name'      => $this->name,
             'email'     => $this->email,
             'mobile'    => $this->mobile,
+            'authorizations' => new AccessPointResource($this->whenLoaded('accessPoint')),
             'personal_profile' => $this->personalProfile === null ?  "Fill in your profile...".$profileLink  : new PersonalProfileResource($this->whenLoaded('personalProfile')),
             
             'access_types' => AccessTypeResource::collection($this->whenLoaded('accessTypes')),
