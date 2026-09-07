@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use App\Domains\Wallet\Models\ComplianceProfile;
 
-#[Fillable('name', 'slug', 'status')]
+#[Fillable('name', 'code', 'description', 'is_active')]
 class ErrandType extends Model
 {
     

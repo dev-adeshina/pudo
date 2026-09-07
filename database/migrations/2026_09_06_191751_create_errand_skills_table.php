@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('errand_types', function (Blueprint $table) {
+        Schema::create('errand_skills', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('code');
-            $table->text('description');
-            $table->boolean('is_active')->default(true);
+            $table->foreignId('skill_id')->constrained('skills')->cascadeOnDelete();
+            $table->foreignId('errand_id')->constrained('errands')->cascadeOnDelete();
             $table->timestamps();
         });
     }
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('errand_types');
+        Schema::dropIfExists('errand_skills');
     }
 };

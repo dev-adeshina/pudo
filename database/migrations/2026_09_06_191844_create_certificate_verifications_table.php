@@ -11,10 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('errands', function (Blueprint $table) {
+        Schema::create('certificate_verifications', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('pudo_id')->constrained('pudos')->cascadeOnDelete();
-            $table->foreignId('errand_type_id')->constrained('errand_types')->casecadeOnDelete();
+            $table->foreignId('errand_certificate_id')->constrained('errand_certificates')->cascadeOnDelete();
+            $table->string('method');
+            $table->string('provider');
+            $table->string('provider_reference');
+            $table->timestamp('verified_by');
+            $table->timestamp('verified_at');
+            $table->text('notes');
             $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
             $table->timestamps();
         });
@@ -25,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('errands');
+        Schema::dropIfExists('certificate_verifications');
     }
 };

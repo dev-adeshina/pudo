@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 
-#[Fillable('pudo_id', 'errand_type_id', 'residential_address', 'emergency_contact_name', 'emergency_contact_name', 'emergency_contact_mobile', 'contact_verification')]
+#[Fillable('pudo_id', 'errand_type_id', 'status')]
 class Errand extends Model
 {
     public function pudo(): BelongsTo
@@ -20,6 +20,11 @@ class Errand extends Model
     public function type(): BelongsTo
     {
         return $this->belongsTo(ErrandType::class);
+    }
+
+    public function profile(): HasOne 
+    {
+        return $this->hasOne(ErrandProfile::class);
     }
 
     public function kyc(): HasOne

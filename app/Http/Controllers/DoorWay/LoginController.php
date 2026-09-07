@@ -32,10 +32,7 @@ class LoginController extends Controller
         }
 
         $token = $user->createToken($request->device_name);
-
-        // $user = User::with(['accessPoint',  'accessTypes.accessable', 'accessTypes.accessable.profile'])->findOrfail($user->id);
-       
-
+ 
         $user = User::with(['accessPoint',  'accessTypes.accessable' => function ($morphTo) {
         $morphTo->morphWith([
             Client::class => ['profile'],
