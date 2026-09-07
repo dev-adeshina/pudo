@@ -36,6 +36,9 @@ class AccountController extends Controller
                 'vendor', 
                 'vendor.profile',
                 'errand',
+                'errand.type',
+                'errand.profile',
+                'errand.skill'
                 // 'vride',
             ],
         ]);

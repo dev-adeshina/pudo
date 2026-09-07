@@ -19,12 +19,17 @@ class Errand extends Model
 
     public function type(): BelongsTo
     {
-        return $this->belongsTo(ErrandType::class);
+        return $this->belongsTo(ErrandType::class,  'errand_type_id');
     }
 
-    public function profile(): HasOne 
+    public function profile(): HasOne
     {
         return $this->hasOne(ErrandProfile::class);
+    }
+
+    public function skill(): HasOne
+    {
+        return $this->hasOne(ErrandSkill::class);
     }
 
     public function kyc(): HasOne

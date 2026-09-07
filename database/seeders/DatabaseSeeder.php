@@ -36,6 +36,23 @@ class DatabaseSeeder extends Seeder
 
         $users = User::factory(30)->create();
 
+        DB::table('errand_types')->insert([
+            ['name' => 'BASIC', 'code' => 'ER-10001', 'description' => 'Two-wheeled vehicle ride service.', 'is_active' => true],
+            ['name' => 'SKILLED', 'code' => 'ER-10002', 'description' => 'Two-wheeled vehicle ride service.', 'is_active' => true],
+        ]);
+
+
+        DB::table('skills')->insert([
+            ['name' => 'Lawyer', 'code' => 'ER-10001', 'description' => 'Two-wheeled vehicle ride service.'],
+            ['name' => 'Radionic', 'code' => 'ER-10002', 'description' => 'Two-wheeled vehicle ride service.'],
+            ['name' => 'Carpentry', 'code' => 'ER-10002', 'description' => 'Two-wheeled vehicle ride service.'],
+            ['name' => 'Taylor', 'code' => 'ER-10002', 'description' => 'Two-wheeled vehicle ride service.'],
+            ['name' => 'ShoeCobler', 'code' => 'ER-10002', 'description' => 'Two-wheeled vehicle ride service.'],
+            ['name' => 'Phone-Repair', 'code' => 'ER-10002', 'description' => 'Two-wheeled vehicle ride service.']
+        ]);
+
+        
+
         // DB::table('pudos')->insert([
         //     ['user_id' => $users[0]->id, 'type' => 'VENDOR',  'created_at' => $timestamp, 'updated_at' => $timestamp],
         //     ['user_id' => $users[1]->id, 'type' => 'ERRAND',  'created_at' => $timestamp, 'updated_at' => $timestamp],

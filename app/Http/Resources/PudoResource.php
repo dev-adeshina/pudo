@@ -21,6 +21,10 @@ class PudoResource extends JsonResource
                 $this->whenLoaded('vendor')
             ),
 
+            'errand' => new ErrandResource(
+                $this->whenLoaded('errand')
+            )
+
         ];
     }
 }
