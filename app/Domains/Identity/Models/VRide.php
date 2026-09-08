@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 
-#[Fillable('pudo_id', 'name', 'slug', 'description', 'requires_drivers_license', 'requires_vehicle_registration', 'requires_insurance', 'status')]
+#[Fillable('pudo_id', 'status')]
 class VRide extends Model
 {
     //
@@ -21,15 +21,35 @@ class VRide extends Model
         return $this->belongsTo(Pudo::class);
     }
 
-    public function type(): BelongsTo
+    public function profile(): HasOne
     {
-        return $this->belongsTo(VRideType::class);
+        return $this->hasOne(VRideProfile::class);
     }
 
     public function kyc(): HasOne
     {
         return $this->hasOne(VRideKyc::class);
     }
+
+    // public function documents(): HasMany
+    // {
+    //     return $this->hasMany(VRideDocument::class);
+    // }
+
+    // public function vehicles(): HasMany
+    // {
+    //     return $this->hasMany(Vehicle::class);
+    // }
+
+    // public function services(): HasMany
+    // {
+    //     return $this->hasMany(VRideService::class);
+    // }
+
+    // public function capabilities(): HasMany
+    // {
+    //     return $this->hasMany(VRideCapability::class);
+    // }
 
     public function trip(): HasMany
     {

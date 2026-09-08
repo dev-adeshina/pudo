@@ -11,16 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('v_ride_kycs', function (Blueprint $table) {
+        Schema::create('v_ride_capabilities', function (Blueprint $table) {
             $table->id();
             $table->foreignId('v_ride_id')->constrained('v_rides')->cascadeOnDelete();
-            $table->enum('id_type', ['NIN', 'BVN', 'PASSPORT', 'DL']);
-            $table->string('id_number');
-            $table->enum('status', ['pending', 'processing', 'rejected', 'verified'])->default('pending');
-            $table->timestamp('submitted_at')->nullable();
+            $table->foreignId('capability_id')->constrained('capabilities')->restrictOnDelete();
+            $table->string('status')->default('pending');
             $table->timestamp('verified_at')->nullable();
-            $table->text('rejection_reason')->nullable();
             $table->timestamps();
+            $table->unique(['vride_id', 'capability_id']);
         });
     }
 
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('v_ride_kycs');
+        Schema::dropIfExists('v_ride_capabilities');
     }
 };

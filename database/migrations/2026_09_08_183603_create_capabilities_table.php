@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('v_rides', function (Blueprint $table) {
+        Schema::create('capabilities', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('pudo_id')->constrained('pudos')->cascadeOnDelete();
-            $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
+            $table->string('name');
+            $table->string('slug')->unique();
+
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }
@@ -24,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('v_rides');
+        Schema::dropIfExists('capabilities');
     }
 };

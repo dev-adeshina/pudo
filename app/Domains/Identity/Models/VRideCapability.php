@@ -6,19 +6,23 @@ use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-#[Fillable('vride_id', 'id_type', 'id_number', 'status', 'submitted_at', 'verified_at', 'rejection_reason')]
-class VRideKyc extends Model
+#[Fillable('vride_id', 'capability_id', 'status', 'verified_at')]
+class VRideCapability extends Model
 {
     protected function casts(): array
     {
         return [
-            'submitted_at' => 'datetime',
             'verified_at' => 'datetime',
         ];
     }
 
-    public function vride(): BelongsTo
+    public function vRide(): BelongsTo
     {
         return $this->belongsTo(VRide::class);
+    }
+
+    public function capability(): BelongsTo
+    {
+        return $this->belongsTo(Capability::class);
     }
 }
