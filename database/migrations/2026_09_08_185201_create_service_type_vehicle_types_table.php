@@ -21,10 +21,6 @@ return new class extends Migration
                 ->constrained('vehicle_types')
                 ->cascadeOnDelete();
 
-            $table->primary([
-                'service_type_id',
-                'vehicle_type_id',
-            ]);
         });
     }
 

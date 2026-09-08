@@ -21,10 +21,6 @@ return new class extends Migration
                 ->constrained('capabilities')
                 ->cascadeOnDelete();
 
-            $table->primary([
-                'service_type_id',
-                'capability_id',
-            ]);
         });
     }
 
