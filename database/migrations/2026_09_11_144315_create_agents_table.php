@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('agents', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
+            $table->string('agent_code')->unique();
+            $table->enum('type', ['Field', 'Regional', 'Supervisor'])->default('Field');
+            $table->enum('status', ['Pending', 'Active', 'Suspended', 'Inactive'])->default('Pending');
+            $table->timestamp('activated_at')->nullable();
+            $table->timestamp('suspended_at')->nullable();
+            $table->json('metadata')->nullable();
             $table->timestamps();
         });
     }

@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('actors', function (Blueprint $table) {
+        Schema::create('agent_activities', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
-            $table->string('actor_code')->unique();
-            $table->enum('status', ['Pending', 'Active', 'Suspended', 'Inactive'])->default('Pending');
-            $table->timestamp('activated_at')->nullable();
-            $table->timestamp('suspended_at')->nullable();
+            $table->foreignId('agent_id')->constrained('agents')->cascadeOnDelete();
+            $table->string('action');
+            $table->nullableMorphs('subject');
+            $table->foreignId('location_id')->nullable()->constrained('locations')->nullOnDelete();
+            $table->text('notes')->nullable();
             $table->json('metadata')->nullable();
             $table->timestamps();
         });
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('actors');
+        Schema::dropIfExists('agent_activities');
     }
 };
