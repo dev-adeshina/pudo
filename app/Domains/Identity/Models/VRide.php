@@ -31,25 +31,25 @@ class VRide extends Model
         return $this->hasOne(VRideKyc::class);
     }
 
-    // public function documents(): HasMany
-    // {
-    //     return $this->hasMany(VRideDocument::class);
-    // }
+    public function documents(): HasMany
+    {
+        return $this->hasMany(VRideDocument::class);
+    }
 
-    // public function vehicles(): HasMany
-    // {
-    //     return $this->hasMany(Vehicle::class);
-    // }
+    public function vehicles(): HasMany
+    {
+        return $this->hasMany(Vehicle::class);
+    }
 
-    // public function services(): HasMany
-    // {
-    //     return $this->hasMany(VRideService::class);
-    // }
+    public function services(): HasMany
+    {
+        return $this->hasMany(VRideService::class);
+    }
 
-    // public function capabilities(): HasMany
-    // {
-    //     return $this->hasMany(VRideCapability::class);
-    // }
+    public function capabilities(): HasMany
+    {
+        return $this->hasMany(VRideCapability::class);
+    }
 
     public function trip(): HasMany
     {

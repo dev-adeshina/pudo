@@ -23,7 +23,17 @@ class PudoResource extends JsonResource
 
             'errand' => new ErrandResource(
                 $this->whenLoaded('errand')
-            )
+            ),
+
+            'vride' => new VRideResource(
+                $this->whenLoaded('vride')
+            ),
+            'agent' => new AgentResource(
+                $this->whenLoaded('agent')
+            ),
+            'actor' => new ActorResource(
+                $this->whenLoaded('actor')
+            ),
 
         ];
     }
