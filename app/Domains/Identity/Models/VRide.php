@@ -26,10 +26,10 @@ class VRide extends Model
         return $this->hasOne(VRideProfile::class);
     }
 
-    public function kyc(): HasOne
-    {
-        return $this->hasOne(VRideKyc::class);
-    }
+    // public function kyc(): HasOne
+    // {
+    //     return $this->hasOne(VRideKyc::class);
+    // }
 
     public function documents(): HasMany
     {
@@ -64,5 +64,10 @@ class VRide extends Model
     public function complianceProfile(): MorphOne
     {
         return $this->morphOne(ComplianceProfile::class, 'subject');
+    }
+
+    public function kyc(): MorphOne
+    {
+        return $this->morphOne(Kyc::class, 'kycable');
     }
 }

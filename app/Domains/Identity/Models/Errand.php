@@ -32,13 +32,18 @@ class Errand extends Model
         return $this->hasOne(ErrandSkill::class);
     }
 
-    public function kyc(): HasOne
-    {
-        return $this->hasOne(ErrandKyc::class);
-    }
+    // public function kyc(): HasOne
+    // {
+    //     return $this->hasOne(ErrandKyc::class);
+    // }
 
     public function wallet(): MorphOne
     {
         return $this->morphOne(Wallet::class, 'owner');
+    }
+
+    public function kyc(): MorphOne
+    {
+        return $this->morphOne(Kyc::class, 'kycable');
     }
 }

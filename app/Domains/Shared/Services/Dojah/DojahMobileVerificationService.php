@@ -1,7 +1,7 @@
 <?php 
 
-namespace App\Domains\Wallet\Services\Dojah;
-use App\Domains\Shared\Services\ApiServices\ApiClient;
+namespace App\Domains\Shared\Services\Dojah;
+use App\Domains\Shared\Services\Dojah\DojahClient;
 use Illuminate\Http\Client\Response;
 
 class DojahMobileVerificationService
@@ -10,6 +10,6 @@ class DojahMobileVerificationService
 
      public function verifyMobileNumber(array $data): Response 
      {
-         return $this->client->gets('api/v1/kyc/phone_number', $data);
+         return $this->client->get('api/v1/kyc/phone_number', $data);
      }
 }

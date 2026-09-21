@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('agents', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('pudo_id')->constrained('pudos')->cascadeOnDelete();
             $table->string('agent_code')->unique();
             $table->enum('type', ['Field', 'Regional', 'Supervisor'])->default('Field');
             $table->enum('status', ['Pending', 'Active', 'Suspended', 'Inactive'])->default('Pending');

@@ -1,7 +1,7 @@
 <?php 
 
-namespace App\Domains\Wallet\Services\Dojah;
-use App\Domains\Shared\Services\ApiServices\ApiClient;
+namespace App\Domains\Shared\Services\Dojah;
+use App\Domains\Shared\Services\Dojah\DojahClient;
 use Illuminate\Http\Client\Response;
 
 class DojahIdentityAndAgeVerificationService
@@ -9,6 +9,6 @@ class DojahIdentityAndAgeVerificationService
      public function __construct(protected DojahClient $client){}
      public function verifyIdentityAndAge(array $data): Response 
      {
-         return $this->client->gets('/api/v1/kyc/age_verification', $data);
+         return $this->client->get('/api/v1/kyc/age_verification', $data);
      }
 }

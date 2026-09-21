@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('actors', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('pudo_id')->constrained('pudos')->cascadeOnDelete();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->string('actor_code')->unique();
             $table->enum('status', ['Pending', 'Active', 'Suspended', 'Inactive'])->default('Pending');

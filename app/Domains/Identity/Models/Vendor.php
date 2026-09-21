@@ -38,10 +38,10 @@ class Vendor extends Model
         return $this->hasMany(Item::class);
     }
 
-    public function kyc(): HasOne
-    {
-        return $this->hasOne(VendorKyc::class);
-    }
+    // public function kyc(): HasOne
+    // {
+    //     return $this->hasOne(VendorKyc::class);
+    // }
 
     public function wallet(): MorphOne
     {
@@ -51,5 +51,10 @@ class Vendor extends Model
     public function complianceProfile(): MorphOne
     {
         return $this->morphOne(ComplianceProfile::class, 'subject');
+    }
+
+    public function kyc(): MorphOne
+    {
+        return $this->morphOne(Kyc::class, 'kycable');
     }
 }

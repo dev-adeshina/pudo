@@ -38,4 +38,14 @@ class Pudo extends Model
     {
         return $this->hasOne(Vride::class);
     }
+
+    public function agent(): HasOne 
+    {
+        return $this->hasOne(Agent::class);
+    }
+
+    public function actor(): HasOne 
+    {
+        return $this->hasOne(Actor::class);
+    }
 }

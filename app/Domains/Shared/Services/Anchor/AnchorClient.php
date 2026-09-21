@@ -1,6 +1,6 @@
 <?php 
 
-namespace App\Domains\Wallet\Services\Anchor;
+namespace App\Domains\Shared\Services\Anchor;
 
 use App\Domains\Shared\Services\ApiServices\ApiClient;
 use Illuminate\Http\Client\Response;

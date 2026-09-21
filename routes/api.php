@@ -18,3 +18,4 @@ require __DIR__ . '/delivery.php';
 require __DIR__ . '/search.php';
 require __DIR__ . '/auth.php';
 require __DIR__ . '/signed.php';
+require __DIR__ . '/kyc.php';

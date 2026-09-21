@@ -21,8 +21,6 @@ class ApiResponse
             meta:  $meta,
             statusCode: $statusCode
         );
-          
-        
     }
 
 

@@ -1,6 +1,6 @@
 <?php 
 
-namespace App\Domains\Wallet\Services\Dojah;
+namespace App\Domains\Shared\Services\Dojah;
 use App\Domains\Shared\Services\ApiServices\ApiClient;
 use Illuminate\Http\Client\Response;
 
@@ -12,27 +12,27 @@ class DojahClient
     } 
 
 
-    public function gets(string $url, array $query = []): Response  
+    public function get(string $url, mixed $query = []): Response  
     {
         return $this->client->get($this->base.'/'.ltrim($url, '/'), $query, $this->headers());
     }
 
-    public function posts(string $url, array $data = []): Response 
+    public function post(string $url, mixed $data = []): Response 
     {
         return $this->client->post($this->base.'/'.ltrim($url, '/'), $data, $this->headers());
     }
 
-    public function puts(string $url, array $data = []): Response 
+    public function put(string $url, mixed $data = []): Response 
     {
         return $this->client->put($this->base.'/'.ltrim($url, '/'), $data, $this->headers());
     }
 
-    public function patchs(string $url, array $data = []): Response 
+    public function patch(string $url, mixed $data = []): Response 
     {
         return $this->client->patch($this->base.'/'.ltrim($url, '/'), $data, $this->headers());
     }
 
-    public function deletes(string $url, array $query = []): Response 
+    public function delete(string $url, mixed $query = []): Response 
     {
         return $this->client->delete($this->base.'/'.ltrim($url, '/'), $query, $this->headers());
     }
