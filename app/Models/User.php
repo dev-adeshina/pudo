@@ -22,7 +22,7 @@ use App\Domains\Wallet\Models\Wallet;
 use App\Domains\Identity\Models\PersonalProfile;
 use App\Domains\Identity\Models\Agent;
 use App\Domains\Identity\Models\Actor;
-
+use App\Domains\Identity\Models\Kyc;
 
 #[Fillable(['access_point_id', 'name', 'mobile', 'email', 'password'])]
 #[Hidden(['password', 'remember_token'])]
@@ -77,5 +77,11 @@ class User extends Authenticatable implements MustVerifyEmail
     public function actor(): HasOne 
     {
         return $this->hasOne(Actor::class);
+    }
+
+
+    public function kyc(): HasOne 
+    {
+        return $this->hasOne(Kyc::class);
     }
 }

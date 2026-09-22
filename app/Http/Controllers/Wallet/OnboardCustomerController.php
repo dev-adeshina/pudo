@@ -11,7 +11,6 @@ use Illuminate\Http\JsonResponse;
 
 class OnboardCustomerController extends Controller
 {
-    //
 
     public function __construct(protected OnboardCustomerAction $action){}
 
